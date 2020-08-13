@@ -8,10 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ulamki {
+
 	public static void main(String[] args) {
 		List<String> pairs = getStringList("src/ulamki65/dane_ulamki.txt");
 		List<Double> ulamki = new ArrayList<>();
-
+		
+		
 		for (String pair : pairs) {
 			String[] nums = pair.split(" ");
 			ulamki.add(Double.parseDouble(nums[0]));
@@ -50,7 +52,27 @@ public class Ulamki {
 		 * 
 		 * System.out.println("Expected: ? Actual: " + sumNumerators(ulamki));
 		 */
+		//65.4
+		System.out.println("Expected: 229320 Actual: " + convertNumeratorFraction(2.00,5.00));
+		
+		System.out.println("Expected: 659295 Actual: " + sumConvertedNumerators(Arrays.asList(2.00,5.00,3.00,4.00)));
+		System.out.println("Expected: ? Actual: " + sumConvertedNumerators(ulamki));
 
+	}
+
+	private static Double sumConvertedNumerators(List<Double> fractions) {
+		Double sum = 0.00;
+		for (int i = 0; i < fractions.size(); i = i + 2) {
+			sum += convertNumeratorFraction(fractions.get(i), fractions.get(i + 1));
+		}
+		
+		
+		return sum;
+	}
+
+	private static Double convertNumeratorFraction(double a, double b) {
+		Double denominator = 573300.00;
+		return a*(denominator/b);
 	}
 
 	private static Double sumNumerators(List<Double> fractions) {
