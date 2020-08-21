@@ -25,16 +25,15 @@ public class fraktalFibbonacciego {
 		// 67.2
 		// System.out.println("Expected: ??? Actual: " + getPrimeElements(fibbonacci));\
 
-		/*
-		 * 67.3 for(int i = 0; i< 39; i++) {
-		 * System.out.println(bianryFibbonacci.get(i)); }
+		/* 67.3
+		 * for (int i = 0; i < 39; i++) { System.out.println(binaryFibbonacci.get(i)); }
 		 */
-		for (int i = 0; i < binaryFibbonacci.size(); i++) {
-			if (countOnes(binaryFibbonacci.get(i)) == 6) {
-				System.out.println(binaryFibbonacci.get(i));
-			}
-		}
 
+		/*
+		 * 67.4 for (int i = 0; i < binaryFibbonacci.size(); i++) { if
+		 * (countOnes(binaryFibbonacci.get(i)) == 6) {
+		 * System.out.println(binaryFibbonacci.get(i)); } }
+		 */
 	}
 
 	/*
