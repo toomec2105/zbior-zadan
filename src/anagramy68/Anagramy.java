@@ -28,7 +28,7 @@ public class Anagramy {
 		// 68.2
 		// System.out.println("Expected: ???, Actual: " + countAngrams(pairs));
 		// 68.3
-		System.out.println("Expected: ??? Actual: " + getFrequentAnagram(pairs));
+		//System.out.println("Expected: ??? Actual: " + getFrequentAnagram(pairs));
 
 	}
 
@@ -44,32 +44,25 @@ public class Anagramy {
 	 * return false; } } return true; }
 	 */
 
-	private static Integer getFrequentAnagram(List<String> pairs) {
-		List<String> texts = new ArrayList<>();
-		Map<Map<Character, Integer>, Integer> anagramFrequencies = new HashMap<>();
-		Integer topFrequency = 0;
-
-		for (String pair : pairs) {
-			String[] temp = pair.split(" ");
-			texts.add(temp[0]);
-			texts.add(temp[1]);
-		}
-
-		for (String text : texts) {
-			Map<Character, Integer> currentAnagram = getLettersFrequency(text);
-			
-			if (anagramFrequencies.containsKey(currentAnagram)) {
-				anagramFrequencies.put(currentAnagram, anagramFrequencies.get(currentAnagram) + 1);
-			} else {
-				anagramFrequencies.put(currentAnagram, 1);
-			}
-			if (anagramFrequencies.get(currentAnagram) > topFrequency) {
-				topFrequency = anagramFrequencies.get(currentAnagram);
-			}
-		}
-
-		return topFrequency;
-	}
+	/* 
+	 * private static Integer getFrequentAnagram(List<String> pairs) { List<String>
+	 * texts = new ArrayList<>(); Map<Map<Character, Integer>, Integer>
+	 * anagramFrequencies = new HashMap<>(); Integer topFrequency = 0;
+	 * 
+	 * for (String pair : pairs) { String[] temp = pair.split(" ");
+	 * texts.add(temp[0]); texts.add(temp[1]); }
+	 * 
+	 * for (String text : texts) { Map<Character, Integer> currentAnagram =
+	 * getLettersFrequency(text);
+	 * 
+	 * if (anagramFrequencies.containsKey(currentAnagram)) {
+	 * anagramFrequencies.put(currentAnagram, anagramFrequencies.get(currentAnagram)
+	 * + 1); } else { anagramFrequencies.put(currentAnagram, 1); } if
+	 * (anagramFrequencies.get(currentAnagram) > topFrequency) { topFrequency =
+	 * anagramFrequencies.get(currentAnagram); } }
+	 * 
+	 * return topFrequency; }
+	 */
 
 	/*
 	 * 68.2 private static Integer countAngrams(List<String> pairs) { Integer
