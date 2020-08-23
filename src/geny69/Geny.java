@@ -29,7 +29,14 @@ public class Geny {
 
 		// 69.3
 		// System.out.println("Expected: 1,4 Actual: " + getGenotypeInfo("AABB"));
-		//System.out.println("Expected: ??? Actual: " + getSpeciesInfo(genotypes));
+		// System.out.println("Expected: ??? Actual: " + getSpeciesInfo(genotypes));
+
+		System.out.println("Expected: AABCDBB Actual: " + getGenesBackwards("EAABCDBBDCBAAEBCDEE"));
+		System.out.println("Expected: AADADBBAABCABB Actual: " + getGenesBackwards("DBBACBAACCCBBDADAAEEE"));
+		System.out.println("Expected: AABCDBB Actual: " + getGenes("EAABCDBBECAAB"));
+		System.out.println("Expected: AACEBB Actual: " + getGenesBackwards("EAABCDBBECAAB"));
+		//System.out.println("Expected: ?? Actual: " + countStronglyProtectiveGenotypes(genotypes));
+		System.out.println("Expected: ?? Actual: " + countProtectiveGenotypes(genotypes));
 	}
 
 	/*
@@ -61,15 +68,54 @@ public class Geny {
 	 */
 
 	/*
-	 * private static String getGenes(String genotype) { String output = ""; Integer
-	 * start = 0; for (int i = 0; i < genotype.length() - 1; i++) { if
-	 * (Character.toString(genotype.charAt(i)).equals("A") &&
-	 * Character.toString(genotype.charAt(i + 1)).equals("A") && start == 0) { start
-	 * = i; } if (Character.toString(genotype.charAt(i)).equals("B") &&
-	 * Character.toString(genotype.charAt(i + 1)).equals("B") && start != 0) {
-	 * output += genotype.substring(start, i + 2); start = 0; } } return output; }
+	 * private static Integer countStronglyProtectiveGenotypes(List<String>
+	 * genotypes) { int counter = 0; for(String genotype: genotypes) {
+	 * if(getGenes(genotype).equals(getGenesBackwards(genotype))) { counter ++; } }
+	 * return counter; }
 	 */
+	private static Integer countProtectiveGenotypes(List<String> genotypes) {
+		int counter = 0;
+		for(String genotype: genotypes) {
+			if(getGenes(genotype).equals(getGenes(reverseString(genotype)))) {
+			counter ++;	
+			}
+		}
+		return counter;
+	}
 
+	private static String getGenes(String genotype) {
+		String output = "";
+		Integer start = 0;
+		for (int i = 0; i < genotype.length() - 1; i++) {
+			if (Character.toString(genotype.charAt(i)).equals("A")
+					&& Character.toString(genotype.charAt(i + 1)).equals("A") && start == 0) {
+				start = i;
+			}
+			if (Character.toString(genotype.charAt(i)).equals("B")
+					&& Character.toString(genotype.charAt(i + 1)).equals("B") && start != 0) {
+				output += genotype.substring(start, i + 2);
+				start = 0;
+			}
+		}
+		return output;
+	}
+
+	private static String getGenesBackwards(String genotype) {
+		String output = "";
+		Integer start = 0;
+		for (int i = genotype.length() - 1; i > 0; i--) {
+			if (Character.toString(genotype.charAt(i)).equals("A")
+					&& Character.toString(genotype.charAt(i - 1)).equals("A") && start == 0) {
+				start = i;
+			}
+			if (Character.toString(genotype.charAt(i)).equals("B")
+					&& Character.toString(genotype.charAt(i - 1)).equals("B") && start != 0) {
+				output += reverseString(genotype.substring(i - 1, start + 1));
+				start = 0;
+			}
+		}
+		return output;
+	}
 	/*
 	 * public static List<Integer> countSpecies(List<String> genotypes) {
 	 * Map<Integer, Integer> species = new HashMap<Integer,Integer>(); Integer
@@ -83,6 +129,15 @@ public class Geny {
 	 * species.get(currentSpecies); } } return
 	 * Arrays.asList(species.size(),topPopulation); }
 	 */
+
+	private static String reverseString(String str) {
+		String reverse = "";
+
+		for (int i = str.length() - 1; i >= 0; i--) {
+			reverse = reverse + str.charAt(i);
+		}
+		return reverse;
+	}
 
 	private static List<String> getStringList(String path) {
 
