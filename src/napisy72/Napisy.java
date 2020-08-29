@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Napisy {
@@ -12,9 +13,16 @@ public class Napisy {
 
 		// 72.1 System.out.println("Expected: ??? Actual: " +
 		// count3TimesLonger(napisy));
+
 		// 72 .2 System.out.println("Expected: ??? + Actual: " +
 		// checkContainingStrings(napisy));
-		System.out.println("Expected: ??? Actual: " + getLongestEnding(napisy));
+
+		/*
+		 * 72.3 System.out.println("Expected: ??? Actual: " +
+		 * getLongestEndingSize(napisy)); System.out.println("Expected: 2 Actual: " +
+		 * getLongestEndingSize(Arrays.asList("zac czernac")));
+		 */
+
 	}
 
 	/*
@@ -32,17 +40,27 @@ public class Napisy {
 	 */
 
 	/*
-	 * 72.2s private static List<String> checkContainingStrings(List<String> napisy)
+	 * 72.2 private static List<String> checkContainingStrings(List<String> napisy)
 	 * { List<String> output = new ArrayList<>(); for (String napis : napisy) {
 	 * String first = napis.split(" ")[0]; String second = napis.split(" ")[1];
 	 * if(second.length() > first.length() && second.substring(0,
 	 * first.length()).equals(first)) { output.add(napis); } } return output; }
 	 */
 
-	private static List<String> getLongestEnding(List<String> napisy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/*
+	 * 72.3 private static Integer getLongestEndingSize(List<String> napisy) {
+	 * Integer endingLength = 0; for (String napis : napisy) { String first =
+	 * napis.split(" ")[0]; String second = napis.split(" ")[1]; Integer length = 0;
+	 * 
+	 * if (first.length() > second.length()) { length = second.length(); } else {
+	 * length = first.length(); } Integer currLength = 0; for (int i = 0; i <
+	 * length; i++) {
+	 * 
+	 * String firstEnding = first.substring(first.length() - i - 1); String
+	 * secondEnding = second.substring(second.length() - i - 1); if
+	 * (firstEnding.equals(secondEnding)) { currLength++; } if (currLength >
+	 * endingLength) { endingLength = currLength; } } } return endingLength; }
+	 */
 
 	private static List<String> getStringList(String path) {
 		List<String> strings = new ArrayList<>();
